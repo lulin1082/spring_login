@@ -35,6 +35,7 @@ public class UserDAOSpringJdbcImpl implements UserDAO{
 		return user;
 	}
 
+	//check something
 	class UserRowMapper implements RowMapper<User>{
 
 		public User mapRow(ResultSet rs,
@@ -47,7 +48,7 @@ public class UserDAOSpringJdbcImpl implements UserDAO{
 			user.setPwd(rs.getString("password"));
 			return user;
 		}
-		
+
 	}
 
 }
