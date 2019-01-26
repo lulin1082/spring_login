@@ -38,7 +38,11 @@ public class LoginController {
 		}
 		return "error";
 	}
-	
+
+	/**
+	 *
+	 * @return 返回登录页
+	 */
 	@RequestMapping("/toLogin.do")
 	public String toLogin(){
 		System.out.println("toLogin()");
@@ -93,10 +97,7 @@ public class LoginController {
 		
 		//将验证码绑定到session上
 		HttpSession session =request.getSession();
-		HttpSession session = request.getsession();
-		
-		session.setAttribute("number",number);
-		
+
 		session.setAttribute("number",number);
 		
 		for(int i =0;i<20;i++){
@@ -125,14 +126,14 @@ public class LoginController {
 	public String getNumber(int size){
 		String chars="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 				+ "0123456789";
-		String number="";
+		String code="  ";
 		Random r=new Random();
 		for(int i=0;i<size;i++){
-			number += chars.charAt(
+			code += chars.charAt(
 					r.nextInt(chars.length()));
 			
 		}
-		return number;
+		return code;
 	}
 	
 }

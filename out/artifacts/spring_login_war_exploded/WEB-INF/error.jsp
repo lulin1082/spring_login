@@ -4,8 +4,6 @@
 <head>
 </head>
 <body style="font-size:30px;">
-   	这是首页
-
-<h1> 好吧，这是主</h1>
+   	系统繁忙，稍后重试
 </body>
 </html>

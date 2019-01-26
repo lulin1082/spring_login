@@ -21,10 +21,10 @@ public class UserDAOSpringJdbcImpl implements UserDAO{
 	@Autowired
 	@Qualifier("jt")
 	private JdbcTemplate jt;
-	
+
 	public User findByUsername(String username) {
 		String sql="select * from t_user_y"
-				+ " where username=?";
+				+ " where name=?";
 		Object[] args={username};
 		User user=null;
 		try{
@@ -34,8 +34,7 @@ public class UserDAOSpringJdbcImpl implements UserDAO{
 		}
 		return user;
 	}
-	
-	
+
 	class UserRowMapper implements RowMapper<User>{
 
 		public User mapRow(ResultSet rs,
