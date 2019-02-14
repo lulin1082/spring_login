@@ -1,6 +1,7 @@
 package cn.tedu.ems.service;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
 
@@ -11,15 +12,27 @@ import cn.tedu.ems.entity.User;
  * 业务层实现类
  */
 @Service("loginService")
-public class LoginServiceImpl implements
-        LoginService {
+public class LoginServiceImpl implements LoginService{
+
 
     @Resource(name = "userDAO")
     private UserDAO dao;
 
-    public User checkLogin(String username, String pwd) {
-        User user = dao.findByUsername(username);
+    public User checkLogin(String username, String pwd, String code,String nember) {
 
+
+        System.out.println("---====----: "+code.toUpperCase());
+        if(code==""||code==null){
+            throw new ApplicationException("请输入验证码");
+        }
+
+
+
+        if(!(code.toUpperCase()).equals(nember.toUpperCase().trim())){
+            throw new ApplicationException("验证码不正确");
+        }
+
+        User user = dao.findByUsername(username);
 
         if (user == null) {
             /*
@@ -29,16 +42,19 @@ public class LoginServiceImpl implements
 			 * 	表示层在捕获到应用异常之后，
 			 * 	需要明确提示用户采取正确的操作。
 			 */
-            throw new ApplicationException(
-                    "用户名不存在");
+            throw new ApplicationException("用户名不存在");
         }
         if (!user.getPwd().equals(pwd)) {
             throw new ApplicationException(
                     "密码错误");
         }
         //登录验证通过
+        System.out.println("----"+user.toString());
         return user;
     }
 
 
+    public User checkLogin(String username, String pwd) {
+        return null;
+    }
 }

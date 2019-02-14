@@ -8,7 +8,8 @@ import cn.tedu.ems.entity.User;
  */
 public interface LoginService {
 	public User checkLogin(
-			String username,String pwd);
+			String username,String pwd,String code,String number);
+
 }
 
 
