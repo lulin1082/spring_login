@@ -51,17 +51,40 @@ public class LoginController {
 	
 	@RequestMapping("/login.do")
 	public String login(HttpServletRequest request,HttpSession session){
-		System.out.println("login()");
+		/*System.out.println("login()");
 		String username = request.getParameter("username");
 		String pwd = request.getParameter("pwd");
 		System.out.println(username+ " "	+ pwd);
-		
+		String code=session.getAttribute("code");
+		String
 		//将请求分发给业务层来处理
-		User user = ls.checkLogin(username, pwd);	
+		User user = ls.checkLogin(username, pwd,code,number);
 			
 		session.setAttribute("uset",user);
 		
+		return "redirect:toIndex.do";*/
+
+		System.out.println("login()");
+		String username = request.getParameter("username");
+		String pwd = request.getParameter("pwd");
+		String code=request.getParameter("number");
+		// System.out.println(username + " " + pwd);
+		String number=(String)session.getAttribute("number");
+		System.out.print("session:"+number);
+
+		//将请求分发给业务层来处理
+		User user = ls.checkLogin(username, pwd,code,number);
+		//username pwd code number
+
+		session.setAttribute("user", user);
+
+		Object o=session.getAttribute("user");
+
+		System.out.println("ridirect:");
 		return "redirect:toIndex.do";
+
+
+
 	}
 	
 	@RequestMapping("/toIndex.do")

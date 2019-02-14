@@ -43,7 +43,7 @@ public class UserDAOSpringJdbcImpl implements UserDAO{
 			user.setId(rs.getInt("id"));
 			user.setName(rs.getString("name"));
 			user.setUsername(rs.getString("username"));
-			user.setGendar(rs.getString("gendar"));
+			user.setGendar(rs.getString("gender"));
 			user.setPwd(rs.getString("password"));
 			return user;
 		}

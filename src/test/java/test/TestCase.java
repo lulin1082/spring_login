@@ -45,7 +45,7 @@ public class TestCase {
                 ac.getBean("loginService",
                         LoginService.class);
         User user =
-                ls.checkLogin("Sally", "1234");
+                ls.checkLogin("Sally", "1234","a","a");
         System.out.println(user);
     }
 }
