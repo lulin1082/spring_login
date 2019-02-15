@@ -36,15 +36,16 @@ public class UserDAOSpringJdbcImpl implements UserDAO{
 	}
 
 	class UserRowMapper implements RowMapper<User>{
-
-		public User mapRow(ResultSet rs,
-				int arg1) throws SQLException {
+		public User mapRow(ResultSet rs,  int arg1) throws SQLException {
 			User user=new User();
 			user.setId(rs.getInt("id"));
 			user.setName(rs.getString("name"));
-			user.setUsername(rs.getString("username"));
+			user.setUserName(rs.getString("username"));
 			user.setGendar(rs.getString("gender"));
-			user.setPwd(rs.getString("password"));
+			user.setPassword(rs.getString("password"));
+			user.setEmail(rs.getString("email"));
+			user.setCode(rs.getString("code"));
+			user.setState(rs.getInt("state"));
 			return user;
 		}
 		

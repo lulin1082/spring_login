@@ -16,10 +16,8 @@
 </filter-mapping>
  
  <servlet>
-    <servlet-name>springmvc</servlet-name>
-    <servlet-class>
-             org.springframework.web.servlet.DispatcherServlet
-    </servlet-class>
+    <servlet-name>springmvc2</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet    </servlet-class>
     <!-- 
     		DispatcherServlet的初始化方法在执行时，
     		会启动Spring容器。所以，需要指定Spring
@@ -27,12 +25,12 @@
      -->
     <init-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>classpath:springmvc.xml</param-value>
+        <param-value>classpath:spring*.xml</param-value>
     </init-param>
     <load-on-startup>1</load-on-startup>
 </servlet>
 <servlet-mapping>
-    <servlet-name>springmvc</servlet-name>
+    <servlet-name>springmvc2</servlet-name>
     <url-pattern>*.do</url-pattern>
 </servlet-mapping>
  

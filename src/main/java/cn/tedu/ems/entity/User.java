@@ -1,48 +1,91 @@
 package cn.tedu.ems.entity;
 
 public class User {
-	private int id;
-	private String username;
-	private String pwd;
-	private String name;
-	private String gendar;
-	
-	
+
+	private Integer id;// 用户id
+	private String userName;// 用户名
+	private String email;// 用户邮箱
+	private String password;// 用户密码
+	private Integer state;// 用户账号状态：0表示未激活，1表示激活
+	private String code;// 激活码
+	private String name;//姓名
+	private String gendar;//性别
+
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", username=" + username + ", pwd=" + pwd + ", name=" + name + ", gendar=" + gendar
-				+ "]";
+		return "User{" +
+				"id=" + id +
+				", userName='" + userName + '\'' +
+				", email='" + email + '\'' +
+				", password='" + password + '\'' +
+				", state=" + state +
+				", code='" + code + '\'' +
+				", name='" + name + '\'' +
+				", gendar='" + gendar + '\'' +
+				'}';
 	}
-	
-	public int getId() {
+
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+
+	public void setId(Integer id) {
 		this.id = id;
 	}
-	public String getUsername() {
-		return username;
+
+	public String getUserName() {
+		return userName;
 	}
-	public void setUsername(String username) {
-		this.username = username;
+
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
-	public String getPwd() {
-		return pwd;
+
+	public String getEmail() {
+		return email;
 	}
-	public void setPwd(String pwd) {
-		this.pwd = pwd;
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public Integer getState() {
+		return state;
+	}
+
+	public void setState(Integer state) {
+		this.state = state;
+	}
+
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	public String getGendar() {
 		return gendar;
 	}
+
 	public void setGendar(String gendar) {
 		this.gendar = gendar;
 	}
-	
 }
