@@ -1,13 +1,13 @@
 package cn.tedu.ems.service;
 
-import javax.activation.FileDataSource;
 import javax.annotation.Resource;
-import javax.servlet.http.HttpSession;
 
-import org.apache.commons.net.ftp.FTPSSocketFactory;
+import cn.tedu.ems.dao.UserDAOSpringJdbcImpl;
+import cn.tedu.ems.dao.UserDao;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import cn.tedu.ems.dao.UserDAO;
+import cn.tedu.ems.dao.UseDaoJdbc;
 import cn.tedu.ems.entity.User;
 
 /**
@@ -17,9 +17,9 @@ import cn.tedu.ems.entity.User;
 public class LoginServiceImpl implements LoginService{
 
 
-    @Resource (name = "userDAO")
-    private UserDAO dao;
-
+ //   @Resource(name="userDao")
+ //   private UserDao  dao;
+/*
     public User checkLogin(String username, String pwd, String code,String nember) {
 
 
@@ -34,16 +34,16 @@ public class LoginServiceImpl implements LoginService{
             throw new ApplicationException("验证码不正确");
         }
 
-        User user = dao.findByUsername(username);
+        User user = dao.findObjectByName(username);
 
         if (user == null) {
-            /*
+            *//*
 			 * 用户名不存在
 			 * 可以抛出一个应用异常
 			 * 注：
 			 * 	表示层在捕获到应用异常之后，
 			 * 	需要明确提示用户采取正确的操作。
-			 */
+			 *//*
             throw new ApplicationException("用户名不存在");
         }
         if (!user.getPassword().equals(pwd)) {
@@ -54,9 +54,14 @@ public class LoginServiceImpl implements LoginService{
         System.out.println("----"+user.toString());
         return user;
     }
-
+*/
 
     public User checkLogin(String username, String pwd) {
+        return null;
+    }
+
+    @Override
+    public User checkLogin(String username, String pwd, String code, String number) {
         return null;
     }
 }

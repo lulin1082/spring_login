@@ -1,13 +1,16 @@
 package cn.tedu.ems.dao;
 
-import cn.tedu.ems.entity.Role;
 import cn.tedu.ems.commom.dao.baseDao;
+import cn.tedu.ems.entity.Role;
+import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
-public abstract class RoleDao extends baseDao<Role>{
+import javax.annotation.Resource;
+import java.util.List;
 
-
-    @Override
-    public int insertObject(Role role) {
-        return 0;
-    }
+@Repository("roleDao")
+public interface RoleDao extends baseDao<Role> {
+    List<Role> findObect();
+    Role findByName(String roleName);
+    Role findById(Integer id);
 }

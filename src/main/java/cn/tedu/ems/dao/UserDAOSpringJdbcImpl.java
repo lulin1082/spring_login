@@ -3,21 +3,22 @@ package cn.tedu.ems.dao;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import javax.annotation.Resource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
 
 import cn.tedu.ems.entity.User;
 
-@Repository("userDAO")
-public class UserDAOSpringJdbcImpl implements UserDAO   {
-	
+//@Repository("userDAO2")
+public class UserDAOSpringJdbcImpl implements UseDaoJdbc {
+	@Override
+	public User findByUsername(String username) {
+		return null;
+	}
+	/*
 	@Autowired
 	@Qualifier("jt")
 	private JdbcTemplate jt;
@@ -50,5 +51,5 @@ public class UserDAOSpringJdbcImpl implements UserDAO   {
 		}
 		
 	}
-
+*/
 }

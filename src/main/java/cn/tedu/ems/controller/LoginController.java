@@ -27,7 +27,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class LoginController {
-	
+	/*
 	@Resource(name="loginService")
 	private LoginService ls;
 	
@@ -43,10 +43,10 @@ public class LoginController {
 		return "error";
 	}
 
-	/**
+	*//**
 	 *
 	 * @return 返回登录页
-	 */
+	 *//*
 	@RequestMapping("/toLogin.do")
 	public String toLogin(){
 		System.out.println("toLogin()");
@@ -55,7 +55,7 @@ public class LoginController {
 	
 	@RequestMapping("/login.do")
 	public String login(HttpServletRequest request,HttpSession session){
-		/*System.out.println("login()");
+		*//*System.out.println("login()");
 		String username = request.getParameter("username");
 		String pwd = request.getParameter("pwd");
 		System.out.println(username+ " "	+ pwd);
@@ -64,7 +64,7 @@ public class LoginController {
 		//将请求分发给业务层来处理
 		User user = ls.checkLogin(username, pwd,code,number);
 		session.setAttribute("uset",user);
-		return "redirect:toIndex.do";*/
+		return "redirect:toIndex.do";*//*
 		System.out.println("login()");
 		String username = request.getParameter("username");
 		String pwd = request.getParameter("pwd");
@@ -91,9 +91,9 @@ public class LoginController {
 	//输出验证码图片
 	public void checkcode(	HttpServletRequest request,HttpServletResponse response)throws IOException{
 		System.out.println("checkcode....");
-		/**
+		*//**
 		 * step1.生成图片
-		 */
+		 *//*
 		//创建一个画布
 		BufferedImage image=new BufferedImage(85,30,BufferedImage.TYPE_INT_BGR);
 		//获得画笔
@@ -121,9 +121,9 @@ public class LoginController {
 		}
 		//在图片上绘制随机数
 		g.drawString(number, 2, 25);
-		/**
+		*//**
 		 * step2.压缩图片并输出
-		 */
+		 *//*
 		//告诉浏览器,服务器返回的是一个图片
 		response.setContentType("image/jpeg");
 		//要获得字节输出流
@@ -160,7 +160,7 @@ public class LoginController {
 		list.add(src);
 		return  list;
 	}
-
+*/
 	
 }
 

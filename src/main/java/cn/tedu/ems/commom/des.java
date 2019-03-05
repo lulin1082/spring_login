@@ -76,7 +76,6 @@ public class des {
             // 生成KEY
             // KeyGenerator keyGenerator = KeyGenerator.getInstance("DES","BC");
             // keyGenerator.getProvider();
-
             KeyGenerator keyGenerator = KeyGenerator.getInstance("DES");
             keyGenerator.init(56);
             // 产生密钥

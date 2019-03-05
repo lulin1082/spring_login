@@ -8,7 +8,7 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import cn.tedu.ems.dao.UserDAO;
+import cn.tedu.ems.dao.UseDaoJdbc;
 import cn.tedu.ems.entity.User;
 import cn.tedu.ems.service.LoginService;
 
@@ -16,10 +16,10 @@ public class TestCase {
     @Test
     //测试 连接池
     public void test1() throws SQLException {
-        String config = "springmvc.xml";
+        String config = "spring-mvc.xml";
         ApplicationContext ac =
                 new ClassPathXmlApplicationContext(config);
-        DataSource ds = ac.getBean("ds", DataSource.class);
+        DataSource ds = ac.getBean("dataSource", DataSource.class);
         System.out.println(ds.getConnection());
     }
 
@@ -27,9 +27,9 @@ public class TestCase {
     @Test
     //测试　　持久层
     public void test2() {
-        String config = "springmvc.xml";
+        String config = "spring-mvc.xml";
         ApplicationContext ac = new ClassPathXmlApplicationContext(config);
-        UserDAO dao = ac.getBean("userDAO", UserDAO.class);
+        UseDaoJdbc dao = ac.getBean("userDAO", UseDaoJdbc.class);
         User user = dao.findByUsername("lulin");
        // System.out.println(user.toString());
     }
@@ -47,7 +47,7 @@ public class TestCase {
     @Test
     //测试　业务层
     public void test3() {
-        String config = "springmvc.xml";
+        String config = "spring-mvc.xml";
         ApplicationContext ac =
                 new ClassPathXmlApplicationContext(
                         config);
