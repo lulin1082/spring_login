@@ -6,6 +6,9 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 import javax.annotation.Resource;
@@ -20,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import cn.tedu.ems.entity.User;
 import cn.tedu.ems.service.ApplicationException;
 import cn.tedu.ems.service.LoginService;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class LoginController {
@@ -46,7 +50,7 @@ public class LoginController {
 	@RequestMapping("/toLogin.do")
 	public String toLogin(){
 		System.out.println("toLogin()");
-		return "login";
+		return "jsp/login";
 	}
 	
 	@RequestMapping("/login.do")
@@ -59,11 +63,8 @@ public class LoginController {
 		String
 		//将请求分发给业务层来处理
 		User user = ls.checkLogin(username, pwd,code,number);
-			
 		session.setAttribute("uset",user);
-		
 		return "redirect:toIndex.do";*/
-
 		System.out.println("login()");
 		String username = request.getParameter("username");
 		String pwd = request.getParameter("pwd");
@@ -75,21 +76,15 @@ public class LoginController {
 		//将请求分发给业务层来处理
 		User user = ls.checkLogin(username, pwd,code,number);
 		//username pwd code number
-
 		session.setAttribute("user", user);
-
 		Object o=session.getAttribute("user");
-
 		System.out.println("ridirect:");
 		return "redirect:toIndex.do";
-
-
-
 	}
 	
 	@RequestMapping("/toIndex.do")
 	public String toIndex( ){
-		return "index";
+		return "jsp/index";
 	}
 	
 	@RequestMapping("/checkcode.do")
@@ -116,36 +111,28 @@ public class LoginController {
 		//设置字体
 		g.setFont(new Font(null,Font.BOLD,24));
 		//生成一个随机数
-		String number=getNumber(5);
-		
+		String number=getNumber(4);
 		//将验证码绑定到session上
 		HttpSession session =request.getSession();
-
 		session.setAttribute("number",number);
-		
 		for(int i =0;i<20;i++){
 			g.setColor(new Color(r.nextInt(255),r.nextInt(255),r.nextInt(255)));
 			g.drawLine(r.nextInt(85), r.nextInt(30),r.nextInt(85), r.nextInt(30));
 		}
 		//在图片上绘制随机数
 		g.drawString(number, 2, 25);
-		
-		
-		
 		/**
 		 * step2.压缩图片并输出
 		 */
 		//告诉浏览器,服务器返回的是一个图片
 		response.setContentType("image/jpeg");
-		
-		
 		//要获得字节输出流
 		OutputStream output=response.getOutputStream();
 		//将原始图片按照指定的格式(jpeg)进行压缩,然后输出
 		javax.imageio.ImageIO.write(image, "jpeg", output);
 		output.close();
 	}
-	
+
 	public String getNumber(int size){
 		String chars="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 				+ "0123456789";
@@ -154,10 +141,26 @@ public class LoginController {
 		for(int i=0;i<size;i++){
 			code += chars.charAt(
 					r.nextInt(chars.length()));
-			
+
 		}
 		return code;
 	}
+
+	@ResponseBody
+	@RequestMapping("/222")
+	public List  getdNumber(int size){
+		List list =null;
+		//list.add("33");
+		Map map=new HashMap();
+		map.put(1,"ds");
+		map.put(2,"dss");
+		Throwable t;
+		String src="dl";
+		list.add(map);
+		list.add(src);
+		return  list;
+	}
+
 	
 }
 

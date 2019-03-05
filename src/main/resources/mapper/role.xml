@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+        "http://ibatis.apache.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.tedu.ems.dao.RoleDao">
+
+
+    <select id="findAll" resultType="entity.Role">
+        select * from role;
+    </select>
+
+    <update id="updateObject" parameter=" " resultType="java.lang.Integer">
+
+      UPDATE role SET
+      id = #{id},
+      rolename=#{name}
+      END
+    </update>
+
+    <insert id="insertObject" parameter=" " resultType="java.lang.Integer">
+      INSERT INTO role
+
+    </insert>
+
+
+</mapper>

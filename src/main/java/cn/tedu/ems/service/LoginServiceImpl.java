@@ -1,8 +1,10 @@
 package cn.tedu.ems.service;
 
+import javax.activation.FileDataSource;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.net.ftp.FTPSSocketFactory;
 import org.springframework.stereotype.Service;
 
 import cn.tedu.ems.dao.UserDAO;
@@ -15,7 +17,7 @@ import cn.tedu.ems.entity.User;
 public class LoginServiceImpl implements LoginService{
 
 
-    @Resource(name = "userDAO")
+    @Resource (name = "userDAO")
     private UserDAO dao;
 
     public User checkLogin(String username, String pwd, String code,String nember) {
@@ -44,7 +46,7 @@ public class LoginServiceImpl implements LoginService{
 			 */
             throw new ApplicationException("用户名不存在");
         }
-        if (!user.getPwd().equals(pwd)) {
+        if (!user.getPassword().equals(pwd)) {
             throw new ApplicationException(
                     "密码错误");
         }

@@ -34,6 +34,16 @@ public class TestCase {
        // System.out.println(user.toString());
     }
 
+
+/*
+    @Test void test333(){
+        String config="spring-mybatis.xml";
+        ApplicationContext ac= new ClassPathXmlApplicationContext("config") ;
+        DataSource ds2=ac.getBean("ds2",DataSource.class);
+        System.out.println(ds2.getConnection());
+    }
+*/
+
     @Test
     //测试　业务层
     public void test3() {

@@ -33,23 +33,10 @@
 		<property name="suffix"
 		value=".jsp"/>
 	</bean>
-	
-	<util:properties id="db" 
-	location="classpath:db.properties"/>
 
-	<bean id="ds" 
-		class="org.apache.commons.dbcp.BasicDataSource"
-		destroy-method="close">
-		<property name="driverClassName" 
-		value="#{db.drivername}"/>
-		<property name="url"
-		value="#{db.url}"/>
-		<property name="username"
-		value="#{db.username}"/>
-		<property name="password"
-		value="#{db.password}"/>
-	</bean>
-	
+	<util:properties id="db"  location="classpath:db.properties"/>
+
+
 	<!-- 拦截器配置 -->
 	<mvc:interceptors>
 		<mvc:interceptor>

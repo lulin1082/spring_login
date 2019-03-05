@@ -16,7 +16,7 @@ import org.springframework.stereotype.Repository;
 import cn.tedu.ems.entity.User;
 
 @Repository("userDAO")
-public class UserDAOSpringJdbcImpl implements UserDAO{
+public class UserDAOSpringJdbcImpl implements UserDAO   {
 	
 	@Autowired
 	@Qualifier("jt")
