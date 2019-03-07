@@ -2,46 +2,47 @@
 <!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
         "http://ibatis.apache.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="cn.tedu.ems.dao.UserDao">
+<mapper namespace="cn.tedu.ems.system.dao.UserDao">
+    <!--    List<User> findObjects();
+    User findObjectById(Integer id);
+    User findObjectByName(String username);
 
+    int updateObject(T t);
 
-
-    <select id="findObjects" resultType="cn.tedu.ems.entity.User">
-
+      int insertObject(T t);
+    -->
+    <select id="findObjects" resultType="cn.tedu.ems.system.entity.User">
         select * from t_user;
+
     </select>
 
-
-
-
-</mapper>
-
-<!--
-<select id="findObjectByName" parameterType="java.lang.String" resultType="cn.tedu.ems.entity.User">
-select * from user where username=#{userName};
+<select id="findObjectByName" parameterType="java.lang.String" resultType="cn.tedu.ems.system.entity.User">
+select * from t_user where name=#{userName};
 </select>
 
-<select id="findObjectById" parameterType="java.lang.Integer" resultMap="cn.tedu.ems.entity.Role">
+<select id="findObjectById" parameterType="java.lang.Integer" resultMap="cn.tedu.ems.system.entity.User">
 
 <where >
-    select * from user where id=#{id};
+    select * from t_user where id=#{id};
 </where>
 
 </select>
 
-<select id="findObjects" resultMap="cn.tedu.ems.entity.Role">
-select * from user;
+<select id="findObjects" resultMap="cn.tedu.ems.system.entity.User">
+select * from t_user;
 </select>
 
-<update id="updateObject" parameterType="cn.tedu.ems.entity.Role">
-updateObject user
-set id=#{id},name=#{userName}
+<update id="updateObject" parameterType="cn.tedu.ems.system.entity.User">
+<!--
+    updateObject t_user set id=#{id},name=#{userName}
+-->
 </update>
 
-<insert id="insertObject" parameterType="cn.tedu.ems.entity.Role">
-INSERT INTO user(id,name)
-values(
-#{id},
-#{userName}
-)
-</insert>-->
+<insert id="insertObject" parameterType="cn.tedu.ems.system.entity.User">
+    <!--INSERT INTO t_user(id,name)
+    values(
+    #{id},
+    #{userName}
+    )-->
+</insert>
+</mapper>

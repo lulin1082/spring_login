@@ -12,10 +12,6 @@ import org.springframework.web.servlet.ModelAndView;
  * 拦截器:用于session验证
  *
  */
- 
-
-
- 
 public class SessionInterceptor implements HandlerInterceptor{
 	private String path;
 

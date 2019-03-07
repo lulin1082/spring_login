@@ -1,37 +1,35 @@
 package test;
 
-import java.sql.SQLException;
-
-import javax.sql.DataSource;
-
+import cn.tedu.ems.system.dao.UserDao;
+import cn.tedu.ems.system.entity.User;
+import cn.tedu.ems.system.service.LoginService;
+import org.apache.ibatis.session.SqlSessionFactory;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import cn.tedu.ems.dao.UseDaoJdbc;
-import cn.tedu.ems.entity.User;
-import cn.tedu.ems.service.LoginService;
+import java.sql.SQLException;
 
 public class TestCase {
     @Test
     //测试 连接池
     public void test1() throws SQLException {
-        String config = "spring-mvc.xml";
-        ApplicationContext ac =
-                new ClassPathXmlApplicationContext(config);
-        DataSource ds = ac.getBean("dataSource", DataSource.class);
-        System.out.println(ds.getConnection());
+        String config = "spring-mybatis.xml";
+        config = "spring-dbcp.xml";
+        ApplicationContext ac = new ClassPathXmlApplicationContext(config);
+        SqlSessionFactory sessionFactory = ac.getBean("sqlSessionFactory", SqlSessionFactory.class);
+        System.out.println(sessionFactory.getConfiguration());
     }
-
 
     @Test
     //测试　　持久层
     public void test2() {
-        String config = "spring-mvc.xml";
-        ApplicationContext ac = new ClassPathXmlApplicationContext(config);
-        UseDaoJdbc dao = ac.getBean("userDAO", UseDaoJdbc.class);
-        User user = dao.findByUsername("lulin");
-       // System.out.println(user.toString());
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("spring-mvc.xml",
+                "spring-dbcp.xml",
+                "spring-mybatis.xml");
+        UserDao dao = ctx.getBean("userDao", UserDao.class);
+        User user = dao.findObjectByName("lulin");
+        // System.out.println(user.toString());
     }
 
 
@@ -47,15 +45,13 @@ public class TestCase {
     @Test
     //测试　业务层
     public void test3() {
-        String config = "spring-mvc.xml";
+        String config[] = {"spring-mvc.xml",
+                "spring-dbcp.xml",
+                "spring-mybatis.xml"};
         ApplicationContext ac =
-                new ClassPathXmlApplicationContext(
-                        config);
-        LoginService ls =
-                ac.getBean("loginService",
-                        LoginService.class);
-        User user =
-                ls.checkLogin("Sally", "1234","a","a");
+                new ClassPathXmlApplicationContext(config);
+        LoginService ls = ac.getBean("loginService", LoginService.class);
+        User user = ls.checkLogin("Sally", "1234", "a", "a");
         System.out.println(user);
     }
 }

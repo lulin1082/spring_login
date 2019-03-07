@@ -1,4 +1,4 @@
-package cn.tedu.ems.entity;
+package cn.tedu.ems.system.entity;
 
 public class Role {
     Integer id;

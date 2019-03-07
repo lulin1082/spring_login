@@ -2,36 +2,36 @@
 <!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
         "http://ibatis.apache.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="cn.tedu.ems.dao.RoleDao">
+<mapper namespace="cn.tedu.ems.system.dao.RoleDao">
 
 
 
-    <select id="findObjectByName" parameterType="java.lang.String" resultType="cn.tedu.ems.entity.Role">
-        select * from role where rolename=#{roleName};
+    <select id="findObjectByName" parameterType="java.lang.String" resultType="cn.tedu.ems.system.entity.Role">
+        select * from t_role where name=#{roleName};
     </select>
 
-    <select id="findObjectById" parameterType="java.lang.Integer" resultMap="cn.tedu.ems.entity.Role">
+    <select id="findObjectById" parameterType="java.lang.Integer" resultType="cn.tedu.ems.system.entity.Role">
 
         <where >
-        select * from role where id=#{id};
+        select * from t_role where id=#{id};
         </where>
 
     </select>
 
-    <select id="findObject" resultMap="cn.tedu.ems.entity.Role">
-        select * from role;
+    <select id="findObjects" resultMap="cn.tedu.ems.system.entity.Role">
+        select * from t_role;
     </select>
 
-    <update id="updateObject" parameterType="cn.tedu.ems.entity.Role">
-        updateObject role
+    <update id="updateObject" parameterType="cn.tedu.ems.system.entity.Role">
+        updateObject t_role
         set id=#{id},name=#{roleName}
     </update>
 
-    <insert id="insertObject" parameterType="cn.tedu.ems.entity.Role">
-      INSERT INTO role(id,name)
+    <insert id="insertObject" parameterType="cn.tedu.ems.system.entity.Role">
+      INSERT INTO t_role(id,name)
         values(
             #{id},
-            #{name}
+            #{roleName}
         )
     </insert>
 

@@ -1,4 +1,4 @@
-package cn.tedu.ems.service;
+package cn.tedu.ems.system.service;
 
 /**
  * 	自定义异常类

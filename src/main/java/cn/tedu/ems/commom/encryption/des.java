@@ -1,4 +1,4 @@
-package cn.tedu.ems.commom;
+package cn.tedu.ems.commom.encryption;
 
 import org.apache.commons.codec.binary.Hex;
 import org.apache.commons.net.util.Base64;

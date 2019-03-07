@@ -1,7 +1,7 @@
 package test.User.dao;
 
-import cn.tedu.ems.dao.UserDao;
-import cn.tedu.ems.entity.User;
+import cn.tedu.ems.system.dao.UserDao;
+import cn.tedu.ems.system.entity.User;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
