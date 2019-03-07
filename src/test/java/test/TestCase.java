@@ -14,8 +14,9 @@ public class TestCase {
     @Test
     //测试 连接池
     public void test1() throws SQLException {
-        String config = "spring-mybatis.xml";
-        config = "spring-dbcp.xml";
+        String config[] = {"spring-mvc.xml",
+                "spring-dbcp.xml",
+                "spring-mybatis.xml"};
         ApplicationContext ac = new ClassPathXmlApplicationContext(config);
         SqlSessionFactory sessionFactory = ac.getBean("sqlSessionFactory", SqlSessionFactory.class);
         System.out.println(sessionFactory.getConfiguration());

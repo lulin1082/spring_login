@@ -20,7 +20,7 @@
 select * from t_user where name=#{userName};
 </select>
 
-<select id="findObjectById" parameterType="java.lang.Integer" resultMap="cn.tedu.ems.system.entity.User">
+<select id="findObjectById" parameterType="java.lang.Integer" resultType="cn.tedu.ems.system.entity.User">
 
 <where >
     select * from t_user where id=#{id};
@@ -28,9 +28,6 @@ select * from t_user where name=#{userName};
 
 </select>
 
-<select id="findObjects" resultMap="cn.tedu.ems.system.entity.User">
-select * from t_user;
-</select>
 
 <update id="updateObject" parameterType="cn.tedu.ems.system.entity.User">
 <!--

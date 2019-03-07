@@ -18,7 +18,7 @@
 
     </select>
 
-    <select id="findObjects" resultMap="cn.tedu.ems.system.entity.Role">
+    <select id="findObjects" resultType="cn.tedu.ems.system.entity.Role">
         select * from t_role;
     </select>
 

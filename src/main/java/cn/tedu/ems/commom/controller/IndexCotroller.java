@@ -5,10 +5,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class IndexCotroller {
-
-    @RequestMapping("index.do")
+  /*  @RequestMapping("/toIndex.do")
+    public String toIndex( ){
+        return "jsp/index";
+    }*/
+    @RequestMapping("/toIndex.do")
     String indexUI(){
-        return "index";
+        return "jsp/index";
     }
 
 }
