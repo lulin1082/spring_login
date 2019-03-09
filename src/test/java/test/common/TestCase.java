@@ -1,13 +1,15 @@
-package test;
+package test.common;
 
 import cn.tedu.ems.system.dao.UserDao;
 import cn.tedu.ems.system.entity.User;
 import cn.tedu.ems.system.service.LoginService;
+import org.apache.commons.codec.DecoderException;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 
 public class TestCase {
@@ -34,15 +36,6 @@ public class TestCase {
     }
 
 
-/*
-    @Test void test333(){
-        String config="spring-mybatis.xml";
-        ApplicationContext ac= new ClassPathXmlApplicationContext("config") ;
-        DataSource ds2=ac.getBean("ds2",DataSource.class);
-        System.out.println(ds2.getConnection());
-    }
-*/
-
     @Test
     //测试　业务层
     public void test3() {
@@ -52,7 +45,14 @@ public class TestCase {
         ApplicationContext ac =
                 new ClassPathXmlApplicationContext(config);
         LoginService ls = ac.getBean("loginService", LoginService.class);
-        User user = ls.checkLogin("Sally", "1234", "a", "a");
+        User user=null;
+        try {
+            user = ls.checkLogin("lulin", "123456", "a", "a");
+        } catch (DecoderException e) {
+            e.printStackTrace();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
         System.out.println(user);
     }
 }

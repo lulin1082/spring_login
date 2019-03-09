@@ -16,16 +16,16 @@ import java.util.UUID;
  */
 public class MD5 {
 
+
+
+
+
     @Test
     public   void decode() {
         String src = "password";
         //String salt = UUID.randomUUID().toString();
         System.out.println(src.getBytes());
-
-
-
         String code = src ;
-
         try {
             MessageDigest md = MessageDigest.getInstance("md5");
             byte[] md5Bytes = md.digest(src.getBytes());

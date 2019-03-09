@@ -49,6 +49,7 @@ public class LoginServiceImpl implements LoginService {
     }
 
     private boolean isComfired(String password, String salt, String pwd)  {
+        System.out.println(password+"  "+salt+"    "+pwd);
         MessageDigest md = null;
         String result=" ";
         try {

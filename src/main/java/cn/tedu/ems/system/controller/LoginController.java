@@ -3,6 +3,7 @@ package cn.tedu.ems.system.controller;
 import java.awt.image.RenderedImage;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,6 +15,7 @@ import javax.servlet.http.HttpSession;
 import cn.tedu.ems.commom.exception.ApplicationException;
 import cn.tedu.ems.system.service.ls.ImageService;
 import cn.tedu.ems.system.service.ls.NumberService;
+import org.apache.commons.codec.DecoderException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -63,7 +65,14 @@ public class LoginController {
 		String code=request.getParameter("number");
 		String number=(String)session.getAttribute("number");
 		//将请求分发给业务层来处理
-		User user = ls.checkLogin(username, pwd,code,number);
+		User user = null;
+		try {
+			user = ls.checkLogin(username, pwd,code,number);
+		} catch (DecoderException e) {
+			e.printStackTrace();
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		}
 		//username pwd code number
 		session.setAttribute("user", user);
 		Object o=session.getAttribute("user");

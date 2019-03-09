@@ -54,6 +54,8 @@ public class User {
 		return salt;
 	}
 
+
+
 	public void setSalt(String salt) {
 		this.salt = salt;
 	}
@@ -104,4 +106,15 @@ public class User {
 	public void setPhase(Float phase) {
 		this.phase = phase;
 	}
+
+
+	@Override
+	public String toString() {
+		return "User{" +
+				"name='" + name + '\'' +
+				", salt='" + salt + '\'' +
+				", password='" + password + '\'' +
+				'}';
+	}
 }
+

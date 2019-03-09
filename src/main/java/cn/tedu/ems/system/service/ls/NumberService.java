@@ -12,7 +12,7 @@ public class NumberService {
     public static String getRandomCode(int size){
         String chars="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
                 + "0123456789";
-        String code="  ";
+        String code="";
         Random r=new Random();
         for(int i=0;i<size;i++){
             code += chars.charAt(
